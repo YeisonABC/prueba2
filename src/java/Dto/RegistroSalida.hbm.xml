@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2020 06:09:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Dto.RegistroSalida" table="registro_salida" catalog="lagranja" optimistic-lock="version">
+        <id name="idRegistroSalida" type="java.lang.Integer">
+            <column name="Id_Registro_Salida" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="insumos" class="Dto.Insumos" fetch="select">
+            <column name="Id_Insumos" not-null="true" />
+        </many-to-one>
+        <many-to-one name="persona" class="Dto.Persona" fetch="select">
+            <column name="Id_Persona" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="Fecha" length="10" not-null="true" />
+        </property>
+        <property name="cantidad" type="int">
+            <column name="Cantidad" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

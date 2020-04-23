@@ -1,0 +1,18 @@
+.cajaSesion{
+    width: 600px;
+    height: 300px;
+    border: 1px solid #868484;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    background: white;
+    box-shadow:6px 10px 10px #8E8D8D;
+}
+.sesion{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;    
+}
+body{
+    background-image: linear-gradient(to right, #6D5B5B , #E9E8E8);
+}

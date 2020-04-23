@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2020 06:09:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Dto.Insumos" table="insumos" catalog="lagranja" optimistic-lock="version">
+        <id name="idInsumos" type="java.lang.Integer">
+            <column name="Id_Insumos" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="80" not-null="true" />
+        </property>
+        <property name="cantidad" type="int">
+            <column name="Cantidad" not-null="true" />
+        </property>
+        <property name="precio" type="int">
+            <column name="Precio" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="200" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="Fecha" length="10" not-null="true" />
+        </property>
+        <set name="detalleFacturas" table="detalle_factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Insumos" />
+            </key>
+            <one-to-many class="Dto.DetalleFactura" />
+        </set>
+        <set name="registroSalidas" table="registro_salida" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Insumos" not-null="true" />
+            </key>
+            <one-to-many class="Dto.RegistroSalida" />
+        </set>
+    </class>
+</hibernate-mapping>

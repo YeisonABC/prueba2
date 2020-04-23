@@ -1,0 +1,61 @@
+.headBarra{
+    border: 1px solid black;
+    margin: 10px;
+    height: 100px;
+}
+.panelIzquierdo{
+    border: 1px solid black;
+    width: 20%;
+    height: 500px;
+    position: fixed;
+    overflow: auto; 
+   background: #E6E5E5;
+}
+.headLogo{
+    width: 90%;
+    border: 1px solid black;
+    height: 40px;
+}
+.contenidoPanelIzquierdo::-webkit-scrollbar{
+    width: 7px;
+}
+.contenidoPanelIzquierdo{
+    overflow: auto;
+    height: 500px;
+}
+
+.paneldDerecho{
+    border: 1px solid black;
+    width:80%;
+    float: right;
+}
+
+/*menu desplegable*/
+.accordion button:hover{
+    transform: translateX(10px);
+    transition: 0.4s;
+}
+.accordion div a{
+    text-decoration: none;
+    color: black;
+}
+.botones:hover{
+    transform: translateX(10px);
+    transition: 0.4s;    
+}
+/*formulario InserPersona.jsp*/
+.formulario{
+    width: 20%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+/*formulario InsertPersonaCliente.jsp*/
+.formularioCliente{
+        width: 40%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}

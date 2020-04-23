@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2020 06:09:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Dto.DetalleFactura" table="detalle_factura" catalog="lagranja" optimistic-lock="version">
+        <id name="idDetalleFactura" type="java.lang.Integer">
+            <column name="Id_Detalle_Factura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="factura" class="Dto.Factura" fetch="select">
+            <column name="Id_Factura" not-null="true" />
+        </many-to-one>
+        <many-to-one name="insumos" class="Dto.Insumos" fetch="select">
+            <column name="Id_Insumos" />
+        </many-to-one>
+        <many-to-one name="productos" class="Dto.Productos" fetch="select">
+            <column name="Id_Productos" />
+        </many-to-one>
+        <property name="valorVenta" type="int">
+            <column name="ValorVenta" not-null="true" />
+        </property>
+        <property name="cantidadVenta" type="int">
+            <column name="CantidadVenta" not-null="true" />
+        </property>
+        <property name="cantidadEntrante" type="int">
+            <column name="CantidadEntrante" not-null="true" />
+        </property>
+        <property name="unidadRegistrada" type="string">
+            <column name="UnidadRegistrada" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

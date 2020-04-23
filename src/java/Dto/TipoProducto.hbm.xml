@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2020 06:09:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Dto.TipoProducto" table="tipo_producto" catalog="lagranja" optimistic-lock="version">
+        <id name="idTipoProducto" type="int">
+            <column name="Id_TipoProducto" />
+            <generator class="foreign">
+                <param name="property">productos</param>
+            </generator>
+        </id>
+        <many-to-one name="produccion" class="Dto.Produccion" fetch="select">
+            <column name="Id_Produccion" not-null="true" />
+        </many-to-one>
+        <one-to-one name="productos" class="Dto.Productos" constrained="true"></one-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

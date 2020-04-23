@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2020 06:09:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Dto.Persona" table="persona" catalog="lagranja" optimistic-lock="version">
+        <id name="idPersona" type="java.lang.Integer">
+            <column name="Id_Persona" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cargo" class="Dto.Cargo" fetch="select">
+            <column name="Id_Cargo" />
+        </many-to-one>
+        <property name="nombres" type="string">
+            <column name="Nombres" length="50" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="Apellidos" length="50" />
+        </property>
+        <property name="razonSocial" type="string">
+            <column name="RazonSocial" length="60" />
+        </property>
+        <property name="genero" type="string">
+            <column name="Genero" length="1" />
+        </property>
+        <property name="tipoIdentificacion" type="string">
+            <column name="Tipo_Identificacion" length="20" />
+        </property>
+        <property name="fechaVinculacion" type="date">
+            <column name="Fecha_Vinculacion" length="10" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="11" />
+        </property>
+        <property name="tipoPersona" type="string">
+            <column name="Tipo_Persona" length="1" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="50" />
+        </property>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Persona" not-null="true" />
+            </key>
+            <one-to-many class="Dto.Factura" />
+        </set>
+        <set name="logins" table="login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Persona" />
+            </key>
+            <one-to-many class="Dto.Login" />
+        </set>
+        <set name="registroSalidas" table="registro_salida" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Persona" not-null="true" />
+            </key>
+            <one-to-many class="Dto.RegistroSalida" />
+        </set>
+    </class>
+</hibernate-mapping>

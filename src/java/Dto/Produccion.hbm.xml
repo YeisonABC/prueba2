@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2020 06:09:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Dto.Produccion" table="produccion" catalog="lagranja" optimistic-lock="version">
+        <id name="idProduccion" type="java.lang.Integer">
+            <column name="Id_Produccion" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="Fecha" length="10" not-null="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="Tipo" length="2" not-null="true" />
+        </property>
+        <property name="cantidadEntrante" type="int">
+            <column name="CantidadEntrante" not-null="true" />
+        </property>
+        <property name="unidadMedida" type="string">
+            <column name="UnidadMedida" length="60" not-null="true" />
+        </property>
+        <set name="tipoProductos" table="tipo_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Produccion" not-null="true" />
+            </key>
+            <one-to-many class="Dto.TipoProducto" />
+        </set>
+    </class>
+</hibernate-mapping>

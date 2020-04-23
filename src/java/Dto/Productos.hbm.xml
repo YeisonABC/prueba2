@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2020 06:09:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Dto.Productos" table="productos" catalog="lagranja" optimistic-lock="version">
+        <id name="idProductos" type="java.lang.Integer">
+            <column name="Id_Productos" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estante" class="Dto.Estante" fetch="select">
+            <column name="Id_Estante" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="200" not-null="true" />
+        </property>
+        <property name="idTipoProducto" type="int">
+            <column name="Id_TipoProducto" not-null="true" />
+        </property>
+        <property name="foto" type="binary">
+            <column name="foto" not-null="true" />
+        </property>
+        <property name="cantidadExistente" type="int">
+            <column name="CantidadExistente" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" />
+        </property>
+        <property name="precioUnidad" type="int">
+            <column name="precioUnidad" not-null="true" />
+        </property>
+        <property name="precioLibra" type="int">
+            <column name="precioLibra" not-null="true" />
+        </property>
+        <property name="precioKilo" type="int">
+            <column name="precioKilo" not-null="true" />
+        </property>
+        <property name="precioArroba" type="int">
+            <column name="precioArroba" not-null="true" />
+        </property>
+        <property name="precioBulto" type="int">
+            <column name="precioBulto" not-null="true" />
+        </property>
+        <one-to-one name="tipoProducto" class="Dto.TipoProducto"></one-to-one>
+        <set name="detalleFacturas" table="detalle_factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Productos" />
+            </key>
+            <one-to-many class="Dto.DetalleFactura" />
+        </set>
+    </class>
+</hibernate-mapping>
